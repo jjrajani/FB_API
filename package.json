@@ -13,10 +13,9 @@
     "start": "node server.js",
     "client": "npm run start --prefix client",
     "heroku-postbuild-client":
-      "npm install --prefix client && npm run build --prefix client",
-    "heroku-postbuild-server": "npm install server",
+      "npm install --prefix client && npm run build --prefix client",f
     "heroku-postbuild":
-      "NPM_CONFIG_PRODUCTION=false npm run heroku-postbuild-client && npm run heroku-postbuild-server"
+      "NPM_CONFIG_PRODUCTION=false npm run heroku-postbuild-client && npm install server"
   },
   "keywords": ["facebook", "ads", "dynamic"],
   "author": "Jenna Rajani",
