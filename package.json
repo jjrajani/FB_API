@@ -9,7 +9,7 @@
     "start": "node server.js",
     "client": "npm run start --prefix client",
     "heroku-postbuild":
-      "MPN_CONFIG_PRODUCTION=false npm install --prefix client --only=dev && npm install --prefix client && npm run build --prefix client"
+      "NPM_CONFIG_PRODUCTION=false npm install --prefix client --only=dev && npm install --prefix client && npm run build --prefix client"
   },
   "keywords": ["facebook", "ads", "dynamic"],
   "author": "Jenna Rajani",
