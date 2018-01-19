@@ -9,7 +9,7 @@ class CreatePage extends Component {
     super(props);
     this.state = {
       name: '',
-      business: ''
+      business_id: ''
     };
   }
   handleChange = e => {
@@ -41,7 +41,7 @@ class CreatePage extends Component {
             value={this.state.name}
             placeholder="Page Name"
           />
-          <select required name="business" onChange={this.handleChange}>
+          <select required name="business_id" onChange={this.handleChange}>
             <option value="">Select Business</option>
             {this.props.businesses.map(bus => {
               return (

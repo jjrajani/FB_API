@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import CapmaignList from '../campaign/CampaignList';
+
 const CURRENCIES = {
   USD: '$'
 };
@@ -37,6 +39,7 @@ class AdAccountProfile extends Component {
         <div className="other">
           <p>Age: {parseInt(ad.age, 10)} days</p>
         </div>
+        <CapmaignList />
       </div>
     );
   }

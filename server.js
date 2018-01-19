@@ -38,6 +38,12 @@ require('./services/passportFacebook');
 /* Auth Routes */
 require('./routes/authFacebookRoutes')(app);
 require('./routes/currentUserRoutes')(app);
+/* Facebook Routes */
+require('./routes/facebook/adAccountRoutes')(app);
+require('./routes/facebook/businessRoutes')(app);
+require('./routes/facebook/campaignRoutes')(app);
+require('./routes/facebook/pageRoutes')(app);
+
 /* FB Thing */
 require('./routes/facebookThingRoutes')(app);
 

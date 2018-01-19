@@ -11,6 +11,9 @@ class CreateAdAccount extends Component {
       name: ''
     };
   }
+  componentDidMount() {
+    this.props.fetchBusinesses();
+  }
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -32,12 +35,29 @@ class CreateAdAccount extends Component {
             value={this.state.name}
             placeholder="Ad Account Name"
           />
+          <label>Select A Business</label>
+          <select name="business_id">
+            <option value="">Select Business</option>
+            {this.props.businesses.map(bus => {
+              return (
+                <option value={bus.id} key={bus.id}>
+                  {bus.name}
+                </option>
+              );
+            })}
+          </select>
         </form>
       </div>
     );
   }
 }
 
-export default connect(null, {
-  createAdAccount: actions.adActions.createAdAccount
+function mapStateToProps({ business }) {
+  return { businesses: business.list };
+}
+
+export default connect(mapStateToProps, {
+  createAdAccount: actions.adActions.createAdAccount,
+  fetchAdAccounts: actions.adActions.fetchAdAccounts,
+  fetchBusinesses: actions.businessActions.fetchBusinesses
 })(CreateAdAccount);

@@ -8,7 +8,7 @@ class BusinessList extends Component {
     this.props.fetchBusinesses();
   }
   render() {
-    console.log('business props', this.props);
+    // console.log('business props', this.props);
     return (
       <div>
         BusinessList<ul>

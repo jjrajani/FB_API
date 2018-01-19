@@ -43,5 +43,6 @@ export const login = () => async dispatch => {
 
 export const logout = () => async dispatch => {
   clearAuthCookies();
+  window.FB.logout();
   dispatch({ type: t.LOGIN, payload: false });
 };

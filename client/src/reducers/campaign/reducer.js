@@ -1,32 +1,25 @@
 // Ad Reducer
-import t from '../../actions/ad/types';
+import t from '../../actions/campaign/types';
 
 export default function(
   state = {
     list: [],
-    currentAd: {
-      name: '',
-      currency: '',
-      account_status: '',
-      amount_spent: '',
-      balance: '',
-      end_advertiser_name: '',
-      funding_source_details: '',
-      age: ''
+    currentCampaign: {
+      name: ''
     }
   },
   action
 ) {
   switch (action.type) {
-    case t.CREATE:
-      console.log('create ad account', action.payload);
+    case t.CREATE_CAMPAIGN:
+      console.log('create campaign', action.payload);
     // return { ...state, list: [...state.list, action.payload] };
-    case t.FETCH_ADS:
-      let { business_id, ads } = action.payload;
+    case t.FETCH_CAMPAIGNS:
+      let { ad_account_id, campaigns } = action.payload;
       // console.log('fetch ads', action.payload);
-      return { ...state, list: { ...state.list, [business_id]: ads } };
-    case t.SELECT_AD:
-      return { ...state, currentAd: action.payload };
+      return { ...state, list: { ...state.list, [ad_account_id]: campaigns } };
+    case t.SELECT_CAMPAIGN:
+      return { ...state, currentCampaign: action.payload };
     default:
       return state;
   }

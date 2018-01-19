@@ -3,9 +3,8 @@ import t from './types';
 
 export const createPage = page => async dispatch => {
   let access_token = localStorage.getItem('fb_access_token');
-  let user_id = localStorage.getItem('fb_user_id');
   let pageCreated = await axios.post(
-    `/api/business/create?access_token=${access_token}&user_id=${user_id}`,
+    `/api/page/create?access_token=${access_token}`,
     page
   );
   dispatch({ type: t.CREATE_PAGE, payload: pageCreated.data });

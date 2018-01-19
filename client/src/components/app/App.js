@@ -16,10 +16,10 @@ import {
 } from '../';
 // <Route exact path="/business/:business_id" component={BusinessProfile}/>
 // <Route exact path="/businesses" component={Business}/>
+import requireAuth from '../hoc/require_authentication';
 
 class App extends Component {
   componentDidMount() {
-    console.log('mounted');
     this.props.initAuth();
   }
   render() {
@@ -34,19 +34,27 @@ class App extends Component {
               </div>
               <div className="content">
                 <Route exact path="/" component={Landing} />
-                <Route exact path="/businesses" component={Businesses} />
+                <Route
+                  exact
+                  path="/businesses"
+                  component={requireAuth(Businesses)}
+                />
                 <Route
                   exact
                   path="/business/:business_id"
-                  component={BusinessDetail}
+                  component={requireAuth(BusinessDetail)}
                 />
                 <Route
                   exact
                   path="/business/:business_id/ad_account/:ad_account_id"
-                  component={AdAccountProfile}
+                  component={requireAuth(AdAccountProfile)}
                 />
-                <Route exact path="/ad_accounts" component={AdAccounts} />
-                <Route exact path="/pages" component={Pages} />
+                <Route
+                  exact
+                  path="/ad_accounts"
+                  component={requireAuth(AdAccounts)}
+                />
+                <Route exact path="/pages" component={requireAuth(Pages)} />
               </div>
             </div>
           </div>

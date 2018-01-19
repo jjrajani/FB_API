@@ -14,9 +14,20 @@ export const fetchAdAccount = adId => async (dispatch, getState) => {
   if (adsState.currentAd && adsState.currentAd.id === adId) {
     return;
   }
-  let adInState = adsState.list.filter(ad => ad.id === adId);
-  if (adInState[0]) {
-    dispatch({ type: t.SELECT_AD, payload: adInState[0] });
+  // [{business_id: [{id: , name}]}]
+  let adsInState = [];
+  let ads = Object.keys(adsState.list).reduce((accum, business_id) => {
+    if (adsState.list[business_id]) {
+      let adAccounts = adsState.list[business_id].filter(ad => {
+        return ad.id === adId ? true : false;
+      });
+      if (adAccounts.length) return adAccounts[0];
+    } else {
+      return accum;
+    }
+  }, {});
+  if (ads) {
+    dispatch({ type: t.SELECT_AD, payload: ads });
   } else {
     let access_token = localStorage.getItem('fb_access_token');
     let selectedAd = await axios.get(
@@ -26,13 +37,22 @@ export const fetchAdAccount = adId => async (dispatch, getState) => {
   }
 };
 
-export const fetchAdAccounts = businessId => async dispatch => {
+export const fetchAdAccounts = business_id => async (dispatch, getState) => {
   let access_token = localStorage.getItem('fb_access_token');
-  let ads = await axios.get(
-    `/api/business/${businessId}/ad_accounts?access_token=${access_token}`
-  );
-  // console.log('ads data', ads.data);
-  dispatch({ type: t.FETCH_ADS, payload: ads.data });
+  let stateList = getState().ad.list;
+  if (stateList[business_id]) {
+    // list already in state
+    return;
+  } else {
+    let ads = await axios.get(
+      `/api/business/${business_id}/ad_accounts?access_token=${access_token}`
+    );
+    // console.log('ads data', ads.data);
+    dispatch({
+      type: t.FETCH_ADS,
+      payload: { business_id: business_id, ads: ads.data }
+    });
+  }
 };
 
 export const createAdAccount = name => async dispatch => {
