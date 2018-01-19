@@ -1,0 +1,17 @@
+.login {
+  button {
+    display: inline-block;
+    padding: 5px 8px;
+    border: solid $ff_red 1px;
+    border-radius: 4px;
+    background-color: $ff_red;
+    color: white;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: background-color 0.25s, color 0.15s ease;
+    &:hover {
+      color: $ff_red;
+      background-color: white;
+    }
+  }
+}

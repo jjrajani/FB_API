@@ -1,0 +1,17 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  .nav-link {
+    border: solid $light-grey 1px;
+    transition: all 0.25s ease;
+    padding: 5px;
+    color: black;
+    &:hover {
+      background-color: $light-grey;
+    }
+    &.active {
+      color: white;
+      background-color: $ff_red;
+    }
+  }
+}

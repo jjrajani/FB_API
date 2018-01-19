@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import * as actions from '../../actions';
 
-// Neds Basic Account Acces
+// Needs Standard Account Access and business_management permissions
 class CreateAdAccount extends Component {
   constructor(props) {
     super(props);

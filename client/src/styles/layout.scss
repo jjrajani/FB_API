@@ -1,0 +1,28 @@
+#root {
+  height: 100%;
+  border: solid purple 3px;
+  .app-container {
+    border: solid red 3px;
+    height: 100%;
+    > div:first-child {
+      height: 100%;
+      border: solid yellow 3px;
+    }
+    .content-wrapper {
+      display: flex;
+      height: $contentHeight;
+      border: solid pink 4px;
+      .left-nav {
+        width: 20%;
+        max-width: 200px;
+        border: solid green 2px;
+        height: 100%;
+      }
+      .content {
+        border: solid orange 3px;
+        min-width: 80%;
+        max-width: calc(100% - 200px);
+      }
+    }
+  }
+}

@@ -1,12 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Nav = () => {
   return (
-    <div>
-      <Link to={`/`}>Home</Link> {' | '}
-      <Link to={`/businesses`}>Businesses</Link> {' | '}
-      <Link to={`/pages`}>Pages</Link>
+    <div className="nav">
+      <NavLink exact className="nav-link" activeClassName="active" to={`/`}>
+        Home
+      </NavLink>
+      <NavLink
+        exact
+        className="nav-link"
+        activeClassName="active"
+        to={`/businesses`}
+      >
+        Businesses
+      </NavLink>
+      <NavLink
+        exact
+        className="nav-link"
+        activeClassName="active"
+        to={`/ad_accounts`}
+      >
+        Ad Accounts
+      </NavLink>
+      <NavLink
+        exact
+        className="nav-link"
+        activeClassName="active"
+        to={`/pages`}
+      >
+        Pages
+      </NavLink>
     </div>
   );
 };

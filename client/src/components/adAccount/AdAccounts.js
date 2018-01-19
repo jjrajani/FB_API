@@ -5,6 +5,9 @@ import * as actions from '../../actions';
 import CreateAdAccount from './createAdAccount';
 import ListAdAccounts from './listAdAccounts';
 
+// Select Business to get business_id
+// Use Business Id to get list of Ad Accounts
+// Use Business Id to create new Ad Accounts
 class AdAccounts extends Component {
   componentDidMount() {
     if (!this.props.business.name) {

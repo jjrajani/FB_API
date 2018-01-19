@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles/main.scss';
 import { App } from './components';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -11,11 +11,15 @@ import reducers from './reducers';
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+document.onreadystatechange = function() {
+  if (document.readyState === 'complete') {
+    ReactDOM.render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+      document.getElementById('root')
+    );
+  }
+};
 
 registerServiceWorker();

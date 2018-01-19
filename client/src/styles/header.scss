@@ -1,0 +1,12 @@
+.header {
+  border: solid blue 3px;
+  height: $headerHeight;
+  // background-color: $light-grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  img {
+    width: 40px;
+  }
+}

@@ -44,7 +44,11 @@ class CreatePage extends Component {
           <select required name="business" onChange={this.handleChange}>
             <option value="">Select Business</option>
             {this.props.businesses.map(bus => {
-              return <option value={bus.id}>{bus.name}</option>;
+              return (
+                <option key={bus.id} value={bus.id}>
+                  {bus.name}
+                </option>
+              );
             })}
           </select>
         </form>
